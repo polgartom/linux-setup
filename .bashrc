@@ -27,7 +27,7 @@ complete -o nospace -F _cdw_complete cdw
 
 ###########################
 
-dhcp-client-renew() {
+dhcp_client_renew() {
   local interfaces="$(ls /sys/class/net/)"
   local i=1
   while [ ! -z "$(echo $interfaces | cut -d' ' -f $i)" ]; do
@@ -50,6 +50,7 @@ dhcp-client-renew() {
 # add . and commit with message shortcut
 git config --global alias.add-commit '!git add . && git commit'
 # git config --global --unset alias.add-commit
+
 gac() { # gac "This is my commit message" -> git add-commit -m "This is my commit message" -> git add . && git commit -m "This is my commit message"
 	git add-commit -m "$1"
 }
@@ -60,6 +61,7 @@ save_linux_setup() {
 	local dir="linux-setup"
 
 	cp $HOME/.bashrc $HOME/$dir/.bashrc
+	cp $HOME/.bash_profile $HOME/$dir/.bash_profile
 
 	local current_dir=$(pwd)
 
