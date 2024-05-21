@@ -28,8 +28,11 @@ dhcp-client-renew() {
 
 # Git
 # add . and commit with message shortcut
-# git config --global --unset alias.ww
-git config --global alias.ii '!git add . && git commit'
+git config --global alias.add-commit '!git add . && git commit'
+# git config --global --unset alias.add-commit
+gac() {
+	git add-commit -m "$1"
+}
 
 
 # If not running interactively, don't do anything
