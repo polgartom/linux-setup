@@ -9,6 +9,8 @@ cdw() {
   cd /var/www/$1;
 }
 
+###########################
+
 _cdw_complete() {
     local cur="${COMP_WORDS[COMP_CWORD]}"
     local dir_list=$(ls /var/www)
@@ -21,8 +23,9 @@ _cdw_complete() {
         done
     fi
 }
-
 complete -o nospace -F _cdw_complete cdw
+
+###########################
 
 dhcp-client-renew() {
   local interfaces="$(ls /sys/class/net/)"
@@ -41,13 +44,17 @@ dhcp-client-renew() {
 	done
 }
 
+###########################
+
 # Git
 # add . and commit with message shortcut
 git config --global alias.add-commit '!git add . && git commit'
 # git config --global --unset alias.add-commit
-gac() { # gac "this is my commit"
+gac() { # gac "This is my commit message" -> git add-commit -m "This is my commit message" -> git add . && git commit -m "This is my commit message"
 	git add-commit -m "$1"
 }
+
+###########################
 
 save_linux_setup() {
 	local dir="linux-setup"
@@ -64,9 +71,7 @@ save_linux_setup() {
 	cd "$current_dir"
 }
 
-
-###########################################################
-
+###########################
 
 
 # If not running interactively, don't do anything
