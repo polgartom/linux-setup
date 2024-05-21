@@ -5,11 +5,11 @@
 xset r rate 200 40
 alias copy="xclip -sel clip"
 
+###########################
+
 cdw() {
   cd /var/www/$1;
 }
-
-###########################
 
 _cdw_complete() {
     local cur="${COMP_WORDS[COMP_CWORD]}"
