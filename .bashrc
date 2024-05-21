@@ -49,8 +49,7 @@ gac() { # gac "this is my commit"
 	git add-commit -m "$1"
 }
 
-# kacsa
-save_bashrc() {
+save_linux_setup() {
 	local dir="linux-setup"
 
 	cp $HOME/.bashrc $HOME/$dir/.bashrc
