@@ -62,6 +62,7 @@ save_linux_setup() {
 
 	cp $HOME/.bashrc $HOME/$dir/.bashrc
 	cp $HOME/.bash_profile $HOME/$dir/.bash_profile
+	cp $HOME/.vimrc $HOME/$dir/.vimrc
 
 	local current_dir=$(pwd)
 
@@ -75,6 +76,12 @@ save_linux_setup() {
 
 ###########################
 
+# TODO set the latest JDK can we change this?
+export JAVA_HOME="/usr/lib/jvm/jdk-22-oracle-x64"
+export PATH="$JAVA_HOME/bin:$PATH"
+export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
+
+###########################
 
 # If not running interactively, don't do anything
 case $- in
