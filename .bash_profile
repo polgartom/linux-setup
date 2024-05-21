@@ -1,0 +1,1 @@
+/home/polgar/.bash_profile
