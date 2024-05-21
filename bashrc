@@ -30,7 +30,7 @@ dhcp-client-renew() {
 # add . and commit with message shortcut
 git config --global alias.add-commit '!git add . && git commit'
 # git config --global --unset alias.add-commit
-gac() {
+gac() { # gac "this is my commit"
 	git add-commit -m "$1"
 }
 
