@@ -126,6 +126,10 @@ esac
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
+if [ "$TERM" = "alacritty" ]; then
+	force_color_prompt=yes;
+fi
+
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -201,5 +205,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
-
-source ~/.bash_completion/alacritty
