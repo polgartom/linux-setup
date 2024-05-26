@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/polgar'
+let g:netrw_dirhist_2='/home/polgar/.local'
+let g:netrw_dirhist_1='/home/polgar/.local/share'
+let g:netrw_dirhist_0='/home/polgar/Programming'
+let g:netrw_dirhist_9='/var/www/oe-app'
+let g:netrw_dirhist_8='/home/polgar/.vim'
+let g:netrw_dirhist_7='/home/polgar/.vim/undo'
+let g:netrw_dirhist_6='/home/polgar/.vim'
+let g:netrw_dirhist_5='/home/polgar/.vim/swap'
+let g:netrw_dirhist_4='/home/polgar/.vim'
