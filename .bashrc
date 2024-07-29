@@ -13,16 +13,23 @@ alias l='ls -CF -h'
 
 ###########################
 
-# Function to add a directory to PATH if it doesn't already exist
-add_to_path() {
-    # The directory to be added to PATH
-    DIR=$1
-    
-    # Check if the directory is already in PATH
-    if [[ ":$PATH:" != *":$DIR:"* ]]; then
-        # Append the directory to PATH
-        export PATH="$PATH:$DIR"
+export PATH;
+pathappend() {
+  for ARG in "$@"
+  do
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$ARG"
     fi
+  done
+}
+pathprepend() {
+  for ((i=$#; i>0; i--));
+  do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
 }
 
 ###########################
@@ -94,15 +101,15 @@ save_linux_setup() {
 	cd "$current_dir"
 }
 
-###########################
+############ PATHS START ##########
 
 # TODO set the latest JDK can we change this?
 export JAVA_HOME="/usr/lib/jvm/jdk-22-oracle-x64"
-add_to_path "$JAVA_HOME/bin:$PATH"
+pathappend "$JAVA_HOME/bin"
 
 export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 
-###########################
+############ PATHS END ############
 
 # If not running interactively, don't do anything
 case $- in
