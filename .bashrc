@@ -4,6 +4,26 @@
 
 xset r rate 200 40
 alias copy="xclip -sel clip"
+alias freespace="df -T -l -BGB"
+
+alias ll='ls -alF -h'
+alias lls='ll -S' # sort by file size, largest first
+alias la='ls -A -h'
+alias l='ls -CF -h'
+
+###########################
+
+# Function to add a directory to PATH if it doesn't already exist
+add_to_path() {
+    # The directory to be added to PATH
+    DIR=$1
+    
+    # Check if the directory is already in PATH
+    if [[ ":$PATH:" != *":$DIR:"* ]]; then
+        # Append the directory to PATH
+        export PATH="$PATH:$DIR"
+    fi
+}
 
 ###########################
 
@@ -78,7 +98,8 @@ save_linux_setup() {
 
 # TODO set the latest JDK can we change this?
 export JAVA_HOME="/usr/lib/jvm/jdk-22-oracle-x64"
-export PATH="$JAVA_HOME/bin:$PATH"
+add_to_path "$JAVA_HOME/bin:$PATH"
+
 export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 
 ###########################
@@ -173,10 +194,6 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
