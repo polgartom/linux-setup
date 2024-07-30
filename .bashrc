@@ -103,6 +103,8 @@ save_linux_setup() {
 
 ############ PATHS START ##########
 
+pathappend "/usr/share"
+
 # TODO set the latest JDK can we change this?
 export JAVA_HOME="/usr/lib/jvm/jdk-22-oracle-x64"
 pathappend "$JAVA_HOME/bin"
@@ -110,6 +112,41 @@ pathappend "$JAVA_HOME/bin"
 export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 
 ############ PATHS END ############
+
+use_php() {
+    if [ -z "$1" ]; then
+        echo "Usage: use_php <version>"
+        echo "Example: use_php 7.4"
+        return 1
+    fi
+
+    PHP_PATH="/usr/bin/php$1"
+
+    if [ ! -f "$PHP_PATH" ]; then
+        echo "PHP version $1 is not installed."
+        return 1
+    fi
+
+    sudo update-alternatives --set php "$PHP_PATH"
+    echo "Switched to PHP $1"
+}
+
+_use_php_completions() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    opts=$(ls /usr/bin/php* | grep -oP '(?<=php)\d+\.\d+' | tr '\n' ' ')
+
+    if [[ ${cur} == * ]]; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+
+complete -F _use_php_completions use_php
+
+
+###########################
 
 # If not running interactively, don't do anything
 case $- in
