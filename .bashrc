@@ -111,6 +111,8 @@ pathappend "$JAVA_HOME/bin"
 
 export CAPACITOR_ANDROID_STUDIO_PATH="/opt/android-studio/bin/studio.sh"
 
+pathappend "/opt/jai/bin"
+
 ############ PATHS END ############
 
 use_php() {
